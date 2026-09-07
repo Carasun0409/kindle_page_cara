@@ -6,81 +6,21 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>Codex 今日工作台</title>
   <style>
-    :root{--ink:#111;--mid:#777;--soft:#d7d7d7;--paper:#fff}
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--paper);color:var(--ink)}
-    body{font-family:"Segoe UI","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.3}
-    .page{width:100%;max-width:760px;margin:0 auto;padding:13px 16px 12px}
-    header{height:43px;border-bottom:3px solid var(--ink);position:relative}
-    h1{font-size:22px;line-height:34px;margin:0;letter-spacing:.3px}
-    .sync{position:absolute;right:0;top:4px;text-align:right;font-size:10px;line-height:1.35;color:#333}
-    .sync:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ink);margin-right:5px}
-    .sync.error:before{background:#fff;border:1px solid var(--ink)}
-    .hero{height:150px;padding:10px 4px 9px;border-bottom:1px solid var(--ink)}
-    .ring{float:left;width:130px;height:130px;position:relative}
-    .ring svg{width:130px;height:130px;transform:rotate(-90deg);-webkit-transform:rotate(-90deg)}
-    .ring circle{fill:none;stroke-width:11}
-    .ring .base{stroke:var(--soft)}
-    .ring .value{stroke:var(--ink)}
-    .ring-center{position:absolute;left:17px;top:31px;width:96px;text-align:center}
-    .ring-center small{font-size:10px;letter-spacing:1.3px;display:block}
-    .ring-center strong{display:block;font-size:38px;line-height:1.05;margin:2px 0}
-    .hero-copy{margin-left:154px;padding-top:17px}
-    .eyebrow{font-size:10px;letter-spacing:1.5px;margin:0 0 7px;text-transform:uppercase;color:#444}
-    .reset-time{font-size:22px;line-height:1.25;margin:0 0 9px;font-weight:650}
-    .credits{margin:0;font-size:13px}.credits b{display:inline-block;border:1px solid var(--ink);padding:2px 8px;margin-left:4px}
-    .metric-head{height:26px;padding-top:7px;font-size:10px;letter-spacing:1.1px;color:#444}
-    .legend{float:right;letter-spacing:0;color:#333}.legend span{margin-left:10px}
-    .dot{display:inline-block;width:7px;height:7px;border-radius:50%;border:1px solid var(--ink);margin-right:4px}.dot.u{background:#111}.dot.c{background:#888}.dot.o{background:#fff}
-    .metrics{display:table;width:100%;table-layout:fixed;border-top:1px solid var(--ink);border-bottom:2px solid var(--ink)}
-    .metric{display:table-cell;padding:8px 11px 9px;border-right:1px solid #aaa;vertical-align:top}.metric:last-child{border-right:0}
-    .metric h2{font-size:11px;margin:0 0 2px;font-weight:500;letter-spacing:.5px}.metric .number{font-size:25px;font-weight:700;margin-bottom:5px}
-    .bar{height:7px;border:1px solid var(--ink);white-space:nowrap;overflow:hidden}.bar i{display:inline-block;height:100%}.u{background:#111}.c{background:#888}.o{background:#fff}
-    .section{padding:9px 3px 7px;border-bottom:1px solid var(--ink)}
-    .section-title{font-size:11px;letter-spacing:1.2px;margin:0 0 6px;text-transform:uppercase}.badge{float:right;border:1px solid var(--ink);padding:0 5px;letter-spacing:0;font-size:11px}
-    .active-row{position:relative;padding:5px 8px 5px 13px;border-top:1px solid #ccc;min-height:35px}.active-row:before{content:"";position:absolute;left:2px;top:9px;width:4px;height:20px;background:#111}.active-row b{font-size:13px;font-weight:650;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.active-row small{font-size:10px;color:#555}
-    .empty{font-size:12px;color:#555;padding:7px 2px}
-    .project{font-size:19px;font-weight:700;margin:0 0 4px;letter-spacing:.2px}
-    .todos{list-style:none;margin:0;padding:0}.todos li{height:27px;border-top:1px solid #ccc;padding:4px 2px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .box{display:inline-block;width:16px;height:16px;line-height:14px;text-align:center;border:1px solid var(--ink);font-size:12px;font-weight:bold;margin-right:8px;vertical-align:-2px}.done .box{background:#111;color:#fff}.done .todo-text{text-decoration:line-through;color:#666}
-    .heat{padding:3px 1px 1px;text-align:center}.heat-row{height:13px;white-space:nowrap}.day{display:inline-block;width:20px;text-align:left;font-size:8px;color:#555;vertical-align:top;padding-top:1px}.cell{display:inline-block;width:calc((100% - 78px)/12);max-width:36px;height:9px;margin:1px 2px;border:1px solid #aaa;vertical-align:top}.l0{background:#fff}.l1{background:#ddd}.l2{background:#aaa}.l3{background:#666}.l4{background:#111}.today{outline:1px solid #111;outline-offset:1px}.future{visibility:hidden}
-    .month-row{height:14px;margin-left:20px;font-size:8px;color:#555;text-align:left}.month-row span{display:inline-block;width:25%;text-align:left}
-    @media(max-width:430px){.page{padding:9px 10px}.hero{height:137px}.ring,.ring svg{width:116px;height:116px}.ring-center{left:12px;top:26px}.hero-copy{margin-left:132px;padding-top:13px}.reset-time{font-size:19px}.metric{padding:7px 6px}.metric .number{font-size:20px}.legend span{margin-left:5px}.cell{margin-left:1px;margin-right:1px;width:calc((100% - 50px)/12)}}
+    html,body{margin:0;padding:0;width:100%;min-height:100%;background:#fff;color:#111}
+    body{font-family:Arial,"Microsoft YaHei",sans-serif;text-align:center}
+    img{display:block;width:100%;height:auto;margin:0 auto;background:#fff}
+    #status{padding:36px 12px;font-size:17px}
   </style>
 </head>
 <body>
-  <main class="page">
-    <header><h1>Codex · 今日工作台</h1><div id="sync" class="sync">连接数据中<br>自动更新</div></header>
-    <section id="hero" class="hero"></section>
-    <div class="metric-head">TOKEN 用量<div class="legend"><span><i class="dot u"></i>未缓存</span><span><i class="dot c"></i>缓存</span><span><i class="dot o"></i>输出</span></div></div>
-    <section id="metrics" class="metrics"></section>
-    <section class="section"><h2 class="section-title">当前活跃 <span id="active-count" class="badge">?</span></h2><div id="active"><div class="empty">正在读取任务状态</div></div></section>
-    <section class="section"><h2 class="section-title">项目 TODO <span id="todo-count" class="badge">?</span></h2><div id="todo"><div class="empty">正在读取项目清单</div></div></section>
-    <section class="section"><h2 class="section-title">近 12 周 Token 活动</h2><div id="activity" class="heat"><div class="empty">正在读取活动记录</div></div></section>
-  </main>
+  <img id="dashboard" alt="Codex 今日工作台">
+  <div id="status">正在获取最新看板…</div>
   <script>
   (function(){
-    var API='https://api.github.com/repos/Carasun0409/kindle_page_cara/contents/dashboard.json?ref=live-data';
-    var INTERVAL=120000,lastGood=null,lastAttempt=0,inFlight=false,timer=null;
-    function esc(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-    function num(n){if(n==null)return'未知';if(n>=1e9)return(n/1e9).toFixed(2)+'B';if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return String(Math.round(n))}
-    function clock(t){if(!t)return'未知';var d=new Date(t);return('0'+(d.getMonth()+1)).slice(-2)+'/'+('0'+d.getDate()).slice(-2)+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
-    function remaining(t){var d=Date.parse(t)-Date.now();if(!isFinite(d))return'重置时间未知';if(d<=0)return'等待额度同步';var m=Math.ceil(d/60000),day=Math.floor(m/1440),h=Math.floor(m%1440/60),min=m%60;return'还有 '+(day?day+' 天 ':'')+(h?h+' 小时 ':'')+min+' 分钟重置'}
-    function metric(title,s){if(!s)return'<article class="metric"><h2>'+title+'</h2><div class="number">未知</div><div class="bar"></div></article>';var total=s.total||0;function width(k){return total?Math.max(0,s[k]||0)/total*100:0}return'<article class="metric"><h2>'+title+'</h2><div class="number">'+num(s.total)+'</div><div class="bar"><i class="u" style="width:'+width('uncached')+'%"></i><i class="c" style="width:'+width('cached')+'%"></i><i class="o" style="width:'+width('output')+'%"></i></div></article>'}
-    function render(data){
-      lastGood=data;var quota=data.quota||{},windows=quota.windows||[],windowData=null,i;for(i=0;i<windows.length;i++)if(windows[i].name==='7d')windowData=windows[i];if(!windowData)windowData=windows[0];var left=windowData?Math.max(0,Math.min(100,100-windowData.pct)):null,circ=326.73,dash=left==null?0:circ*left/100;
-      document.getElementById('hero').innerHTML='<div class="ring"><svg viewBox="0 0 130 130"><circle class="base" cx="65" cy="65" r="52"></circle><circle class="value" cx="65" cy="65" r="52" stroke-dasharray="'+dash+' '+circ+'"></circle></svg><div class="ring-center"><small>'+esc(windowData?windowData.name:'额度')+'</small><strong>'+(left==null?'?':Math.round(left)+'%')+'</strong><small>剩余</small></div></div><div class="hero-copy"><p class="eyebrow">OpenAI Codex allowance</p><p class="reset-time">'+(windowData?remaining(windowData.resets_at):'额度暂不可用')+'</p><p class="credits">可用 reset <b>'+(quota.resetCredits==null?'未知':quota.resetCredits)+' 次</b></p></div>';
-      var usage=data.local&&data.local.usage||{};document.getElementById('metrics').innerHTML=metric('今日',usage.today)+metric('近 7 天',usage.week)+metric('累计',usage.all);
-      var taskData=data.local&&data.local.tasks||{},active=taskData.active||[],activeHtml='';document.getElementById('active-count').innerHTML=taskData.available?active.length:'?';for(i=0;i<active.length&&i<2;i++)activeHtml+='<div class="active-row"><b>'+esc(active[i].title)+'</b><small>'+esc(active[i].project)+' · 运行中</small></div>';document.getElementById('active').innerHTML=activeHtml||(taskData.available?'<div class="empty">当前没有运行任务</div>':'<div class="empty">任务状态暂不可用</div>');
-      var project=data.projectTodo,items=project&&project.items||[],done=0,todos='';for(i=0;i<items.length&&i<7;i++){if(items[i].done)done++;todos+='<li class="'+(items[i].done?'done':'')+'"><span class="box">'+(items[i].done?'✓':'')+'</span><span class="todo-text">'+esc(items[i].text)+'</span></li>'}document.getElementById('todo-count').innerHTML=done+'/'+items.length;document.getElementById('todo').innerHTML=project?'<h3 class="project">'+esc(project.project)+'</h3><ul class="todos">'+todos+'</ul>':'<div class="empty">暂无项目 TODO</div>';
-      var days=usage.activity||[],values=[],heat='',names=['一','二','三','四','五','六','日'];for(i=0;i<days.length;i++)if(!days[i].future&&days[i].tokens>0)values.push(days[i].tokens);values.sort(function(a,b){return a-b});function level(n){if(!n)return 0;var k=1,q=[.25,.5,.75],j;for(j=0;j<q.length;j++)if(n>values[Math.floor((values.length-1)*q[j])])k++;return k}for(var day=0;day<7;day++){heat+='<div class="heat-row"><span class="day">'+names[day]+'</span>';for(var week=0;week<12;week++){var item=days[week*7+day];heat+=item?'<i class="cell l'+level(item.tokens)+(item.today?' today':'')+(item.future?' future':'')+'"></i>':'<i class="cell future"></i>'}heat+='</div>'}heat+='<div class="month-row"><span>12 周前</span><span>9 周前</span><span>6 周前</span><span>本周</span></div>';document.getElementById('activity').innerHTML=heat;
-      var sync=document.getElementById('sync');sync.className='sync'+(quota.confidence==='stale'||data.local&&data.local.stale?' error':'');sync.innerHTML=clock(data.updatedAt)+' 数据<br>'+clock(data.publishedAt)+' 发布';
-    }
-    function decode(content){return decodeURIComponent(escape(atob(String(content).replace(/\s/g,''))))}
-    function retry(){if(timer)clearTimeout(timer);timer=setTimeout(load,INTERVAL)}
-    function fail(){var sync=document.getElementById('sync');sync.className='sync error';sync.innerHTML=lastGood?clock(lastGood.publishedAt)+' 旧数据<br>等待自动重试':'数据暂不可用<br>等待自动重试';inFlight=false;retry()}
-    function load(){var now=Date.now();if(inFlight||now-lastAttempt<15000)return;lastAttempt=now;inFlight=true;if(timer)clearTimeout(timer);var x=new XMLHttpRequest();x.open('GET',API+'&t='+now,true);x.setRequestHeader('Accept','application/vnd.github+json');x.onreadystatechange=function(){if(x.readyState!==4)return;try{if(x.status<200||x.status>=300)throw Error();var outer=JSON.parse(x.responseText),data=JSON.parse(decode(outer.content));if(data.schema!==1)throw Error();render(data);inFlight=false;retry()}catch(e){fail()}};x.onerror=fail;x.send(null)}
-    window.onfocus=load;if(document.addEventListener)document.addEventListener('visibilitychange',function(){if(!document.hidden)load()});load();
+    var image=document.getElementById('dashboard'),status=document.getElementById('status'),timer=null,lastAttempt=0;
+    var SOURCE='https://raw.githubusercontent.com/Carasun0409/kindle_page_cara/live-data/dashboard.png';
+    function update(){var now=new Date().getTime();if(now-lastAttempt<15000)return;lastAttempt=now;var next=new Image();next.onload=function(){image.src=next.src;image.style.display='block';status.style.display='none';if(timer)clearTimeout(timer);timer=setTimeout(update,120000)};next.onerror=function(){status.innerHTML=image.src?'本次更新失败，继续显示上次看板。':'看板暂时不可用，2 分钟后自动重试。';status.style.display='block';if(timer)clearTimeout(timer);timer=setTimeout(update,120000)};next.src=SOURCE+'?t='+now}
+    window.onfocus=update;if(document.addEventListener)document.addEventListener('visibilitychange',function(){if(!document.hidden)update()});update();
   }());
   </script>
 </body>
